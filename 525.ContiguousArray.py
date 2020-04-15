@@ -44,6 +44,7 @@ class Solution:
                 # else - if cumsum repeated - we have a case where subarray at slice (i,j] or [i,j)
                 # is array of equal number of zeros and ones, so update maxLen if this subarr is longest so far
                 else:
+                    # do not update position in map with this (new) position - we seek for longest subarray (longest range)
                     length = i - cumsumPositionsMap[cumsum]
                     maxLen = max(maxLen, length)
         
