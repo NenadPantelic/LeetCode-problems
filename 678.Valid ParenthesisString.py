@@ -72,6 +72,10 @@ print(sol.checkValidString(s))
 s = "(*))"
 print(sol.checkValidString(s))
 
-# Test 3
+# Test 4
 s = ")("
+print(sol.checkValidString(s))
+
+# Test 5
+s = "())"
 print(sol.checkValidString(s))
