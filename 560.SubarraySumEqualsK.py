@@ -52,7 +52,7 @@ class Solution:
         # result
         counter = 0
         cumsum = 0
-        # add zero to sumCounter
+        # add zero to sumCounter -> case when k is in nums
         sumCounter[0] = 1
         for i in range(len(nums)):
             cumsum += nums[i]
