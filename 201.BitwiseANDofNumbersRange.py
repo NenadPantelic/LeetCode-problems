@@ -42,7 +42,7 @@ class Solution:
 # 2. repeat these steps until case a) or c) is fullfiled
     
 class Solution:
-    # Time: O(log(n)), space: O(1) -> worst case all one's in bin representation of both number and numbers are same
+    # Time: O(log(m), space: O(1) -> worst case all one's in bin representation of both number and numbers are same
     # e.g. 31 - 11111 and 11111
     def rangeBitwiseAnd(self, m: int, n: int) -> int:
         # on of values is zero - zero nullifies every value in AND operation
@@ -52,13 +52,13 @@ class Solution:
         res = 0
         while True:
             # get MSB position
-            posMsbM = log(m, 2)
-            posMsbN = log(n, 2)
+            posMsbM = int(log(m, 2))
+            posMsbN = int(log(n, 2))
             # if MSB positions are different return result - at first that is 0
-            if floor(posMsbM) != floor(posMsbN):
+            if posMsbM != posMsbN:
                 return int(res)
             # get MSB weight 
-            weight =  2 ** floor(posMsbM)
+            weight =  2 ** posMsbM
             # add weight to final result
             res += weight
             # subtract weight from both values
