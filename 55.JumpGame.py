@@ -31,6 +31,7 @@ Explanation: You will always arrive at index 3 no matter what. Its maximum
              jump length is 0, which makes it impossible to reach the last index.
 
 """
+# Note: ith element of jumpArray shows if we can come to ith position of the array.
 # Time: O(n), space: O(n)
 class Solution:
     def canJump(self, nums) -> bool:
@@ -53,7 +54,7 @@ class Solution:
             # current element's jump value or use previous one (decremented by 1 -> we spent that jump
             # coming into this position from the previous one
             elif i > 0:
-                nums[i] = max(nums[i], nums[i-1] - 1)
+                nums[i] = max(nums[i], nums[i-1] - 1) # take longer range
                 if nums[i] == 0:
                     # if the value is still zero - return False (we will stop here)
                     #e.g. .... 1 0 ... case
@@ -64,6 +65,7 @@ class Solution:
         if nums[-2] > 0:
             jumpArray[-1] = True
         return jumpArray[-1]
+
     
 sol = Solution()
 # Test 1
