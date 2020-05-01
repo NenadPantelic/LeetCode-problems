@@ -53,6 +53,9 @@ class TreeNode:
 # b) left child and current node
 # c) right child and current node
 # d) left child + current node + right child
+
+# Time: O(n), space: implicitly O(n) -  n calls of recursive function -> O(n) on stack
+
 class Solution:
     def __init__(self):
         self.result = float("-inf")
@@ -60,7 +63,6 @@ class Solution:
         self.result = float("-inf")
         self.maxPathSumUtil(root)
         return self.result
-    
     def maxPathSumUtil(self, root):
         # default case - root is None (no path to make)
         if root is None:
@@ -73,8 +75,10 @@ class Solution:
         # at all -> we examined cases a,b,c
         maxChildPath = max(max(leftChildPathSum, rightChildPathSum) + root.val, root.val)
         # examine case d) -> is it better to go leftCh -> root -> rightChild
-        maxOfAllPathThroughThisNode = max(maxChildPath, leftChildPathSum + rightChildPathSum + root.val)
-        self.result = max(self.result, maxOfAllPathThroughThisNode)
+        # we're acumulating the best result in self.result, but retutrn maxChildPath (this is utilitty function
+        # )  that returns max path sum from this node as root (not the max path sum in the whole tree)
+        maxOfAllPathsThroughThisNode = max(maxChildPath, leftChildPathSum + rightChildPathSum + root.val)
+        self.result = max(self.result, maxOfAllPathsThroughThisNode)
         return maxChildPath
     
 sol = Solution()
