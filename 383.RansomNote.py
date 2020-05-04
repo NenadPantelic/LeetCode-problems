@@ -28,7 +28,6 @@ from collections import Counter
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
         counterMagazineLetters = Counter()
-        counterRansomNoteLetters = Counter()
         
         for letter in magazine:
             counterMagazineLetters[letter] += 1
