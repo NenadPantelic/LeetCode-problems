@@ -43,7 +43,7 @@ The substring with start index = 0 is "ab", which is an anagram of "ab".
 The substring with start index = 1 is "ba", which is an anagram of "ab".
 The substring with start index = 2 is "ab", which is an anagram of "ab".
 """
-# Time: O(n), space: O(n)
+# Time: O(len(s)), space: O(len(p))
 # use sliding window technique - left and right pointer + overlapping 
 # e.g. s = abca, p = abc
 # we reached abc (abc is in the window) -> all chars used, left = 0, right = 3
@@ -57,6 +57,7 @@ class Solution:
         result = []
         left, right = 0, 0
         length = len(p)
+        # num of necessary characters
         charsLeft = len(p)
         while right < len(s):
 
@@ -64,11 +65,11 @@ class Solution:
                 charsLeft -= 1
             counter[s[right]] -= 1
             right += 1
-                
+            # we have an anagram of p
             if charsLeft == 0:
                 # we used all the chars from p
                 result.append(left)
-            
+            # we checked the window of length len(p)
             if right - left == length:
                 if counter[s[left]] >= 0:
                     charsLeft += 1
