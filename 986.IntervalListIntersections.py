@@ -54,10 +54,10 @@ class Solution:
                 continue  
             else:
                 start = max(minA, minB)
-                stop = min(maxA, maxB)
+                end = min(maxA, maxB)
                 # interval intersection condition
-                if start <= stop:
-                    result.append([start, stop])
+                if start <= end:
+                    result.append([start, end])
             # take next interval from A
             if maxA < maxB:
                 i += 1
