@@ -44,7 +44,8 @@ It is guaranteed that costs.length is even.
 Idea:
 1) for every cost element, calculate diff = costs[i][1] - costs[i][0]
 2) store these values in some arr, and also store positions i
-3) sort descending  by diff - we make greedy decisions
+3) sort descending  by diff - we make greedy decisions ---> NOTE: we can sort it in place, without using additional space
+# sort original array by costs[i][0] - costs[i][1]
  costs[i][1] - costs[i][0] is measure if it is better to go in city A or B, large values means
 it is better to go to city A, because flying cost to B is much greater than flying cost to A,
 and vice versa, if this 
