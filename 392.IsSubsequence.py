@@ -39,7 +39,7 @@ Constraints:
 0 <= t.length <= 10^4
 Both strings consists only of lowercase characters.
 """
-# Time: O(max(len(s), len(t))), space: O(1)
+# Time: O(min(len(s), len(t))), space: O(1)
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
         lenS = len(s)
