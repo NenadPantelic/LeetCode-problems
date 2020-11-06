@@ -83,6 +83,7 @@ class Solution:
         if rightSearch != -1:
             return rightSearch
         return -1
+
     
     
 sol = Solution()
@@ -142,3 +143,64 @@ print(sol.search(nums, 1))
 # Test 5
 nums = [6,7,1,2,3,4,5,]
 print(sol.search(nums, 6))
+
+# Time: O(log(n))
+class Solution(object):
+    def search(self, nums, target: int) -> int:
+        def binSearch(nums, target, low, high):
+            #print(low, high)
+            if low > high:
+                return -1
+            mid = low + (high - low) // 2
+            if nums[mid] == target:
+                return mid
+            # go left if the left half is sorted and target value is from that range or if the right
+            # half is sorted but the value is not from that range
+            if (nums[low] <= target < nums[mid]) or (nums[mid] < nums[high] and (nums[mid] > target or nums[high] < target)):
+                high = mid - 1
+            # otherwise, go right
+            else:
+                low = mid + 1
+            return binSearch(nums, target, low, high)
+        return binSearch(nums, target, 0, len(nums)-1)
+
+
+print()
+print()      
+sol = Solution()
+# Test 1
+nums = [4,5,6,7,8,9,0,1,2]
+print(sol.search(nums, 4))
+
+# Test 2
+nums = [4,5,6,7,0,1,2]
+print(sol.search(nums, 3))
+
+# Test 3
+nums = [0,1,2,3,4,5]
+print(sol.search(nums, 5))
+
+# Test 4
+nums = [3,1]
+print(sol.search(nums, 1))
+
+# Test 5
+nums = [6,7,1,2,3,4,5,]
+print(sol.search(nums, 6))
+
+# Test 6
+nums = [4,5,6,7,8,9,0,1,2]
+print(sol.search(nums, 8))           
+
+# Test 7
+nums = [4,5,6,7,8,1,2,3]
+print(sol.search(nums, 8))           
+
+# Test 8 
+nums = [4,5,6,7,0,1,2]
+print(sol.search(nums, 0))
+
+
+# Test 9
+nums = [5,1,2,3,4]
+print(sol.search(nums, 1))
