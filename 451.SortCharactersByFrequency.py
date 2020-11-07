@@ -77,6 +77,12 @@ class Solution:
             
             
         return "".join(resList)
+    
+    def frequencySort(self, s):
+        counter = Counter(s)
+        sortedChars = sorted(counter.items(), key = lambda x:x[1], reverse=True)
+        return "".join([item[0] * item[1] for item in sortedChars])
+        
 
 sol = Solution()
 

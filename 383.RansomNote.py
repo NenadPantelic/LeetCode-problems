@@ -39,6 +39,13 @@ class Solution:
             counterMagazineLetters[letter] -= 1
         
         return True
+    def canConstruct(self, ransomNote, magazine):
+        ransomNoteCounter = Counter(ransomNote)
+        magazineCounter = Counter(magazine)
+        for letter in ransomNoteCounter:
+            if ransomNoteCounter[letter] > magazineCounter.get(letter, 0):
+                return False
+        return True
     
     
 sol = Solution()
