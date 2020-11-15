@@ -55,6 +55,19 @@ class Solution:
                 index += 1
             result.append(subset)
         return result
+    def subsets(self, nums):
+        def generateSubsets(i, subsets, subset = []):
+            if i == len(nums):
+                subsets.append(subset)
+                return
+            generateSubsets(i+1, subsets, subset + [nums[i]])
+            generateSubsets(i+1, subsets, subset)
+        subsets = []
+        generateSubsets(0, subsets, [])
+        return subsets
+    
+                
+            
     
 sol = Solution()
 

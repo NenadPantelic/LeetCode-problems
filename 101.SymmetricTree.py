@@ -72,6 +72,18 @@ class Solution:
             else:
                 return False
         return len(leftSubTreeQueue) == len(rightSubTreeQueue) == 0
+    def isSymetric(self, root):
+        def checkSymetry(left, right):
+            if left is right is None:
+                return True
+            if left is None or right is None:
+                return False
+            return left.val == right.val and checkSymetry(left.right, right.left) \
+                and checkSymetry(left.left, right.right)
+        if root is None: return True
+        return checkSymetry(root.left, root.right)
+    
+        
 
 sol = Solution()
 

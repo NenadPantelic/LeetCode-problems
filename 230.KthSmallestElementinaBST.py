@@ -74,19 +74,35 @@ class Solution:
                 return rightRetVal
             
         return inorder(root)
+    
+    
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
+        def inorder(node):
+            if node is None:
+                return 
+            
+            result = inorder(node.left)
+            if result is not None: return result
+            self.nodeCount += 1
+            if self.nodeCount == k:return node.val
+            result = inorder(node.right)
+            if result is not None: return result
+        return inorder(root)
+            
+            
 sol = Solution()
 
 # Test 1
-n1 = TreeNode(3)
-n2 = TreeNode(1)
-n3 = TreeNode(4)
-n4 = TreeNode(2)
+# n1 = TreeNode(3)
+# n2 = TreeNode(1)
+# n3 = TreeNode(4)
+# n4 = TreeNode(2)
 
-n1.left = n2
-n1.right = n3
-n2.right = n4
+# n1.left = n2
+# n1.right = n3
+# n2.right = n4
 
-print(sol.kthSmallest(n1, 1))
+# print(sol.kthSmallest(n1, 1))
 
 
 # Test 1
