@@ -52,6 +52,13 @@ class Solution:
                 return node
             return reverse(next, node)
         return reverse(head, None)
+    
+    def reverseList(self, head: ListNode, prev=None) -> ListNode:
+        if not head:
+            return prev
+        nextNode = head.next
+        head.next = prev
+        return self.reverseList(nextNode, head)
             
         
     
