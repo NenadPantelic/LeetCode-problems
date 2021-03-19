@@ -47,6 +47,17 @@ class Solution:
             anagramList.append(anagramMap[str])
         return anagramList
     
+    def groupAnagrams(self, strs):
+        sortedStrs = ["".join(sorted(string)) for string in strs]
+        groupedAnagrams = defaultdict(list)
+        for i in range(len(sortedStrs)):
+            sortedStr = sortedStrs[i]
+            originalStr = strs[i]
+            groupedAnagrams[sortedStr].append(originalStr)
+        groupedAnagramsAsList = [anagram for anagram in groupedAnagrams.values()]
+        return groupedAnagramsAsList
+            
+    
 sol = Solution() 
 # Test 1
 strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
