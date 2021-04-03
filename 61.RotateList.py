@@ -57,7 +57,32 @@ class Solution:
         prev.next = None
         tail.next = head
         return node 
-    
+
+class Solution:
+    def rotateRight(self, node: ListNode, k: int) -> ListNode:
+        if node is None:
+            return None
+        lenOfList = 0
+        head = node
+        tail = None
+        while node:
+            tail = node
+            node = node.next
+            lenOfList += 1
+            
+        rotationPos = lenOfList - (k % lenOfList)
+        if rotationPos == lenOfList:
+            return head
+        node = head
+        i = 0
+        prev = None
+        while i  < rotationPos:
+            prev = node
+            node = node.next
+            i += 1
+        prev.next = None
+        tail.next = head
+        return node  
 
 def printList(head):
     node = head
