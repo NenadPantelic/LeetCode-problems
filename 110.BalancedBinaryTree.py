@@ -115,3 +115,18 @@ n1 = TreeNode(1)
 n1.right = TreeNode(2)
 n1.right.right = TreeNode(3)       
 print(Solution().isBalanced(n1))
+class Solution:
+    def isBalanced(self, root):
+        if root is None:
+            return True
+        def height(root):
+            if root is None:
+                return 0
+            if root.left is None and root.right is None:
+                return 1
+            leftHeight = height(root.left)
+            rightHeight = height(root.right)
+            return 1 + max(leftHeight, rightHeight)
+        leftHeight = height(root.left)
+        rightHeight = height(root.right)
+        return abs(leftHeight - rightHeight) <= 1 and self.isBalanced(root.left) and self.isBalanced(root.right)

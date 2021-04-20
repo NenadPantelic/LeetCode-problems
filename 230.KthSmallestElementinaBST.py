@@ -120,3 +120,49 @@ n2.right = n5
 n4.left = n6
 
 print(sol.kthSmallest(n1, 3))
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def __init__(self):
+        self.nodeCount = 0
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
+        def inorder(node):
+            if node is None:
+                return 
+            result = inorder(node.left)
+            if result is not None: return result
+            self.nodeCount += 1
+            if self.nodeCount == k:return node.val
+            result = inorder(node.right)
+            if result is not None: return result
+        return inorder(root)
+    
+    
+class Solution:
+	# @type of root: TreeNode
+	# @type of k: integer
+	# @return type: TreeNode
+    count = 0
+    def kthSmallest(self, root: TreeNode, k: int) -> TreeNode:
+        # write your awesome code here
+        Solution.count = 0
+        def inorderUtils(root, k):
+            if root is None:
+                return 
+            value = inorderUtils(root.left,k)
+            if value is not None:
+                return value
+            Solution.count += 1
+            if k == Solution.count:
+                return root.val
+            value = inorderUtils(root.right, k)
+            if value is not None:
+                return value
+        #kthVal = None
+       	return inorderUtils(root, k)
