@@ -68,6 +68,28 @@ class Solution:
         for i in range(n):
             for j in range(i+1, n):
                 matrix[i][j], matrix[j][i] =  matrix[j][i], matrix[i][j]
+    
+    def rotate(self, matrix) -> None:
+        def isInMatrix(i, j, n):
+            return 0 <= i < n and 0 <= j < n
+        def swap(mat, x,y, a,b):
+            mat[x][y], mat[a][b] = mat[a][b], mat[x][y]
+            
+        n = len(matrix)
+        if n == 1:
+            return matrix
+        i = 0
+        j = 0
+        while i <= n and j < n:
+            if isInMatrix(i,j, n) and isInMatrix(j,i,n):
+                swap(matrix, i, j, j, i)
+            j += 1
+            if j >= n:
+                i += 1
+                j = i
+                
+        for row in matrix:
+            row.reverse()
             
 
 sol = Solution()     
