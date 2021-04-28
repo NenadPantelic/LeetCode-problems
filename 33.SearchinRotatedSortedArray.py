@@ -83,6 +83,29 @@ class Solution:
         if rightSearch != -1:
             return rightSearch
         return -1
+    
+    def search(self, nums, target: int) -> int:
+        def _search(nums, low, high, target):
+            if low > high:
+                return -1
+            mid = low + (high-low)//2
+            if nums[mid] == target:
+                return mid
+            
+            if nums[low] <= nums[mid] <= nums[high]:
+                if nums[mid] > target:
+                    return _search(nums, low, mid-1, target)
+                return _search(nums, mid+1, high, target)
+            if nums[mid] <= nums[high]:
+                if target > nums[high] or target <= nums[mid]:
+                    return _search(nums, low, mid, target)
+                return _search(nums, mid+1, high, target)
+                    
+            if nums[low] <= nums[mid]:
+                if target < nums[low] or target >= nums[mid]:
+                    return _search(nums, mid+1, high, target)
+                return _search(nums, low, mid, target)
+        return _search(nums, 0, len(nums)-1, target)   
 
     
     
